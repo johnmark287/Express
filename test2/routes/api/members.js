@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+// Import data: members
+const members = require('./Members');
 
 // simple restAPI to get all members
 router.get('/api/members', (req, res) => {

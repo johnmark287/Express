@@ -5,9 +5,6 @@ const path = require('path');
 
 const logger = require('./middleware/logger')
 
-// Import data: members
-const members = require('./Members');
-
 
 // initialise an express app instance
 const app = express();
