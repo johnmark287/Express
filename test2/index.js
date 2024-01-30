@@ -2,7 +2,7 @@
 const express = require('express');
 // Deals with file paths
 const path = require('path');
-
+const exphbs = require('express-handlebars');
 const logger = require('./middleware/logger');
 const exp = require('constants');
 
@@ -12,6 +12,10 @@ const app = express();
 
 // Initializing the middleware
 app.use(logger);
+
+// Handlebars middleware
+app.engine('handlebars', exphbs({ defaultLayout:'main' }));
+app.set('view engine', 'handlebars');
 
 // Body parser middleware
 app.use(express.json());
