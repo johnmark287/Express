@@ -16,7 +16,9 @@ app.use(logger);
 
 
 // Set up static folder
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/members', require('./routes/api/members'));
 
 // Create routes
 // app.get('/', (req, res) => {
