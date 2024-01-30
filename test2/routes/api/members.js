@@ -1,7 +1,8 @@
+const uuid = require('uuid');
 const express = require('express');
 const router = express.Router();
 // Import data: members
-const members = require('./Members');
+const members = require('../../Members');
 
 // simple restAPI to get all members
 router.get('/', (req, res) => {
@@ -17,3 +18,26 @@ router.get('/:id', (req, res) => {
         res.status(400).json({ mgs: `No member with id ${req.params.id}` })
     }
 })
+
+// Create member
+router.post('/', (req, res) => {
+    const newMember = {
+        id: uuid.v4(),
+        name: req.body.name,
+        email: req.body.email,
+        status: 'active',
+
+    }
+    // checks if email and/or name were input by user
+    if (!newMember.name || !newMember.email) {
+        return res.status(400).json({ msg: 'Please include a name and an email.' })
+    }
+
+    members.push(newMember);
+    res.json(members);
+});
+
+// Update a member
+
+
+module.exports = router;
