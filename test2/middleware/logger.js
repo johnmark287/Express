@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 // Middleware function 
 const logger = (req, res, next) => {
     // Getss the whole url tapped and date
@@ -6,3 +8,5 @@ const logger = (req, res, next) => {
         ${moment().format()}`);
     next();
 }
+
+module.exports = logger
