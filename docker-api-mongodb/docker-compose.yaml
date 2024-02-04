@@ -1,0 +1,20 @@
+version: '2.20.3'
+services:
+    backend:
+        build: ./backend # image name
+        container_name: backend_c # container name
+        ports:
+            - '5000:5000'
+        volumes:
+            - ./backend:/app
+            - ./app/node_modules
+    frontend:
+        build: ./frontend # image name
+        container_name: frontend_c # container name
+        ports:
+            - '3000:3000'
+        volumes:
+            - ./frontend:/app
+            - ./app/node_modules
+        stdin_open: true
+        tty: true
